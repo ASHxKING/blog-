@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-// var posts = [];
+var posts = [];
 
 ////// Database connection 
 mongoose.set("strictQuery", false);
@@ -18,12 +18,28 @@ const postschema = new mongoose.Schema({
 
 const POST = new mongoose.model("post", postschema);
 
-const homeStartingContent =
-  "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
-const aboutContent =
-  "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
-const contactContent =
-  "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
+const homeStartingContent =`Welcome to our premier destination for staying informed about the latest advancements and trends in the world of technology! Our mission is to provide you with timely insights, expert analysis, and engaging content that will empower you to navigate the rapidly evolving tech landscape with confidence.
+
+Our team of dedicated writers and tech enthusiasts is committed to delivering high-quality, up-to-date information on a wide range of topics, including cutting-edge gadgets, emerging technologies, and industry developments. Whether you're a tech-savvy professional or a curious newcomer, you'll find valuable resources and inspiration to fuel your passion for innovation and discovery.
+
+But we're more than just a source of information—we're a vibrant community of like-minded individuals who share a common interest in exploring the possibilities of technology. Join us in discussions, share your experiences, and connect with fellow enthusiasts from around the globe.
+
+So, whether you're here to stay ahead of the curve, expand your knowledge, or simply indulge your curiosity, our platform is your trusted partner on the journey to technological enlightenment.
+
+Welcome aboard, and let's embark on this exciting adventure together!`
+
+const aboutContent =`Welcome to our tech community! Here, we're passionate about all things technology. Whether you're an avid techie, a curious explorer, or a professional seeking insights, you've found the right place.
+
+Our journey began with a simple idea: to create a space where people could come together to learn, share, and connect over their shared love for innovation. What started as a humble blog has now grown into a thriving community of tech enthusiasts from all walks of life.
+
+What sets us apart is our commitment to providing valuable, insightful content that resonates with our audience. From in-depth product reviews and how-to guides to thought-provoking analysis and industry news, we strive to deliver content that informs, educates, and inspires.
+
+But we're more than just a platform—we're a community. A place where individuals with diverse backgrounds and perspectives come together to engage in meaningful discussions, share their experiences, and support each other on their tech journeys.
+
+So whether you're here to stay up-to-date on the latest tech trends, learn new skills, or connect with fellow enthusiasts, we invite you to join us. Together, let's explore the ever-evolving world of technology and embrace the possibilities it holds for the future.
+
+Welcome to our tech community—where technology meets community.`
+const contactContent ="Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 const app = express();
 
@@ -88,7 +104,7 @@ app.post("/compose", function (req, res) {
   //   title: req.body.postTitle,
   //   body: req.body.userPost,
   // };
-  // posts.push(post);
+  posts.push(post);
 
   
 });
