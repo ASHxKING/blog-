@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+<h1>HOME</h1>
+<p><%=home%></p>
+
+<% customPost.forEach(function(singlePost){ %>
+    <h1><%= singlePost.postTitle %></h1>
+    <% var trimmedString = singlePost.body.substring(0, 100) + "..."; %>
+    
+    <p><%= trimmedString %>
+        <a href="/post/<%= singlePost.postTitle %>" >Read more</a>
+    </p>
+    
+<% }) %>
+
+
+<%- include('partials/footer'); -%>
